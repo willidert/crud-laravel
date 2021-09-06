@@ -1,18 +1,9 @@
 <?php
 
+use App\Http\Controllers\ArtigosController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/artigos', [ArtigosController::class, 'index'])->name('artigos');
+Route::get('/artigos/criar', [ArtigosController::class, 'criar'])->name('artigos.criar');
+Route::post('/artigos/criar', [ArtigosController::class, 'store'])->name('artigos.store');
+Route::post('/artigos/{id}', [ArtigosController::class, 'destroy'])->name('artigos.destroy');
